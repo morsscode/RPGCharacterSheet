@@ -1,13 +1,10 @@
-def hi():
-    print("hello")
-
+#   character class for potentially setting up gameplay elements later
 class character:
     def __init__(self, name, species, cClass):
         self.name = name
         self.species = species
         self.cClass = cClass
         self.spells = []
-        self.damage = 0
         self.health = 100
 
         #if cClass == 'wizard':

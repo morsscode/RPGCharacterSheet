@@ -19,11 +19,11 @@ class rpgData:
             for row in self.cur.execute("SELECT name, cClass, species FROM character"):
                 charactername, cClass, species = row[0], row[1], row[2]
                 if charactername == name:
+                    if display:
+                        print("name: "+str(charactername))
+                        print("species: "+str(species))
+                        print("class: "+str(cClass))
                     return True
-                if display:
-                    print("name: "+str(charactername))
-                    print("species: "+str(species))
-                    print("class: "+str(cClass))
         else:
             print("no character with this name")
 
@@ -72,7 +72,7 @@ class rpgData:
  press 4 to update a characters name
  press 5 to delete a character
  press 9 to exit
-"""
+ input: """
             )
             match step:
                 case "1":
@@ -92,7 +92,3 @@ class rpgData:
                     break
                 case _:
                     print("not recognized")
-
-
-#characterworld = rpgData()
-#characterworld.start()

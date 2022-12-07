@@ -9,12 +9,17 @@ class rpgData:
         self.cur = self.con.cursor()
         self.cur.execute("CREATE TABLE IF NOT EXISTS character(name, species, cClass)")
 
-    def displayAll(self):
+    def GetNames(self, display=True):
+        names = []
         for row in self.cur.execute("SELECT name FROM character"):
             name = row[0]
-            print(name)
+            if display:
+                print(name)
+            names.append(name)
+        return names
 
     def findCharacter(self, name, display=True):
+        data = []
         if self.cur.execute("SELECT * FROM character WHERE name == '" + name + "'").fetchone() != None:
             for row in self.cur.execute("SELECT name, cClass, species FROM character"):
                 charactername, cClass, species = row[0], row[1], row[2]
@@ -23,7 +28,10 @@ class rpgData:
                         print("name: "+str(charactername))
                         print("species: "+str(species))
                         print("class: "+str(cClass))
-                    return True
+                    data.append(charactername)
+                    data.append(cClass)
+                    data.append(species)
+                    return data
         else:
             print("no character with this name")
 

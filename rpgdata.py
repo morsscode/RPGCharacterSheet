@@ -1,4 +1,4 @@
-#   RPG character class. Opens the characters database and then allows you to interact with it.
+#   RPG character class. Opens the characters database and then allows you to interact with it through the command line.
 import sqlite3
 
 

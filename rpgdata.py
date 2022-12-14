@@ -61,6 +61,16 @@ class rpgData:
             self.cur.execute("INSERT INTO character VALUES('" + name + "', '"+species+"', '"+cClass+ "')")
             self.con.commit()
             print("character added")
+    def GuiAdd(self, name, species, cClass):
+        print("new character creation")
+        if self.cur.execute("SELECT * FROM character WHERE name == '" + name + "'").fetchone() != None:
+            print("character already exists")
+            return False
+        else:
+            self.cur.execute("INSERT INTO character VALUES('" + str(name) + "', '"+str(species)+"', '"+str(cClass)+ "')")
+            self.con.commit()
+            print("character added")
+            return True
     def deleteCharacter(self):
         name = input("enter character to delete")
         if self.cur.execute("SELECT * FROM character WHERE name == '" + name + "'").fetchone() != None:
